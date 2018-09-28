@@ -242,6 +242,7 @@ function! NumberToggle()
   endif
 endfunc
 nnoremap <C-n> :call NumberToggle()<cr>
+nnoremap <C-]> g<C-]>
 
 " 防止tmux下vim的背景色显示异常
 " Refer: http://sunaku.github.io/vim-256color-bce.html
@@ -356,7 +357,7 @@ function! HideNumber()
   endif
   set number?
 endfunc
-nnoremap <F2> :call HideNumber()<CR>
+" nnoremap <F2> :call HideNumber()<CR>
 " F3 显示可打印字符开关
 nnoremap <F3> :set list! list?<CR>
 " F4 换行开关
@@ -512,7 +513,7 @@ vnoremap > >gv
 map Y y$
 
 " 复制选中区到系统剪切板中
-vnoremap <leader>y "+y
+vnoremap <leader>c "+y
 
 " auto jump to end of select
 " vnoremap <silent> y y`]
@@ -656,9 +657,12 @@ endif
 " theme主题
 set background=dark
 set t_Co=256
+set tags=~/work/xiachufang/tags
+set tags+=/Users/zming/miniconda2/envs/xcf/lib/python2.7/site-packages/tags
+set tags+=/Users/zming/miniconda2/envs/xcf/lib/python2.7/tags
 
-colorscheme solarized
-" colorscheme molokai
+" colorscheme solarized
+colorscheme molokai
 
 
 " 设置标记一列的背景颜色和数字一行颜色一致
@@ -675,3 +679,8 @@ highlight clear SpellRare
 highlight SpellRare term=underline cterm=underline
 highlight clear SpellLocal
 highlight SpellLocal term=underline cterm=underline
+
+if &term =~ "xterm"
+    let &t_ti = "\<Esc>[?47h"
+    let &t_te = "\<Esc>[?47l"
+endif

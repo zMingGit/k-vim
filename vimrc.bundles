@@ -308,7 +308,7 @@ if has_key(g:plugs, 'syntastic')
     " python
     " pip install flake8
     let g:syntastic_python_checkers=['flake8', ] " 使用pyflakes,速度比pylint快
-    let g:syntastic_python_flake8_options='--ignore=E501,E225,E124,E712,E116,E131'
+    let g:syntastic_python_flake8_options='--ignore=E501,E225,E124,E712,E116,E131,E228,E226,E261,E262,E128,E266,E265'
 
     " javascript
     " let g:syntastic_javascript_checkers = ['jsl', 'jshint']
@@ -431,7 +431,6 @@ endif
     let g:ycm_seed_identifiers_with_syntax=1
     " 回车作为选中
     let g:ycm_key_list_stop_completion = ['<CR>']
-
     "let g:ycm_seed_identifiers_with_syntax=1   "语言关键字补全, 不过python关键字都很短，所以，需要的自己打开
 
     " 跳转到定义处, 分屏打开
@@ -730,7 +729,7 @@ endif
 " ################### 快速导航 ###################
 
 " nerdtree nerdtreetabs {{{
-    " map <leader>n :NERDTreeToggle<CR>
+    map <leader>n :NERDTreeToggle<CR>
     let NERDTreeHighlightCursorline=1
     let NERDTreeIgnore=[ '\.pyc$', '\.pyo$', '\.obj$', '\.o$', '\.so$', '\.egg$', '^\.git$', '^\.svn$', '^\.hg$' ]
     "close vim if the only window left open is a NERDTree
