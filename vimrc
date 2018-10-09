@@ -512,7 +512,7 @@ vnoremap > >gv
 map Y y$
 
 " 复制选中区到系统剪切板中
-vnoremap <leader>y "+y
+vnoremap <leader>c "+y
 
 " auto jump to end of select
 " vnoremap <silent> y y`]
@@ -602,8 +602,9 @@ function! AutoSetFileHead()
     "如果文件类型为python
     if &filetype == 'python'
         " call setline(1, "\#!/usr/bin/env python")
-        " call append(1, "\# encoding: utf-8")
-        call setline(1, "\# -*- coding: utf-8 -*-")
+        call setline(1, "\#!/usr/bin/env python")
+        call setline(2, "\# coding: utf-8")
+        "call setline(1, "\# -*- coding: utf-8 -*-")
     endif
 
     normal G
@@ -657,8 +658,8 @@ endif
 set background=dark
 set t_Co=256
 
-colorscheme solarized
-" colorscheme molokai
+"colorscheme solarized
+colorscheme molokai
 
 
 " 设置标记一列的背景颜色和数字一行颜色一致
@@ -675,3 +676,8 @@ highlight clear SpellRare
 highlight SpellRare term=underline cterm=underline
 highlight clear SpellLocal
 highlight SpellLocal term=underline cterm=underline
+
+if &term =~ "xterm"
+    let &t_ti = "\<Esc>[?47h"
+    let &t_te = "\<Esc>[?47l"
+endif
