@@ -602,8 +602,8 @@ function! AutoSetFileHead()
     "如果文件类型为python
     if &filetype == 'python'
         " call setline(1, "\#!/usr/bin/env python")
-        call setline(1, "\#!/usr/bin/env python")
-        call setline(2, "\# coding: utf-8")
+        "call setline(1, "\#!/usr/bin/env python")
+        call setline(1, "\# coding: utf-8")
         "call setline(1, "\# -*- coding: utf-8 -*-")
     endif
 
@@ -660,6 +660,11 @@ set t_Co=256
 
 "colorscheme solarized
 colorscheme molokai
+
+
+set tags=/home/zming/projects/tags
+set tags+=/home/zming/miniconda2/envs/xcf/lib/python2.7/tags
+nnoremap <C-]> g<C-]>
 
 
 " 设置标记一列的背景颜色和数字一行颜色一致
