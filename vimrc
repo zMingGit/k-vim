@@ -498,8 +498,8 @@ nnoremap <silent> <leader>tt :execute 'tabnext ' . g:last_active_tab<cr>
 autocmd TabLeave * let g:last_active_tab = tabpagenr()
 
 " 新建tab  Ctrl+t
-nnoremap <C-t>     :tabnew<CR>
-inoremap <C-t>     <Esc>:tabnew<CR>
+" nnoremap <C-t>     :tabnew<CR>
+" inoremap <C-t>     <Esc>:tabnew<CR>
 
 
 " => 选中及操作改键
@@ -571,7 +571,7 @@ nnoremap <leader>sv :source $MYVIMRC<CR>
 
 " 具体编辑文件类型的一般设置，比如不要 tab 等
 autocmd FileType python set tabstop=4 shiftwidth=4 expandtab ai
-autocmd FileType ruby,javascript,html,css,xml set tabstop=2 shiftwidth=2 softtabstop=2 expandtab ai
+autocmd FileType ruby,proto,javascript,html,css,xml set tabstop=2 shiftwidth=2 softtabstop=2 expandtab ai
 autocmd BufRead,BufNewFile *.md,*.mkd,*.markdown set filetype=markdown.mkd
 autocmd BufRead,BufNewFile *.part set filetype=html
 autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript tabstop=2 shiftwidth=2 softtabstop=2 expandtab ai
@@ -604,6 +604,7 @@ function! AutoSetFileHead()
         " call setline(1, "\#!/usr/bin/env python")
         "call setline(1, "\#!/usr/bin/env python")
         call setline(1, "\# coding: utf-8")
+        call setline(2, "from __future__ import absolute_import")
         "call setline(1, "\# -*- coding: utf-8 -*-")
     endif
 
@@ -658,12 +659,16 @@ endif
 set background=dark
 set t_Co=256
 
-"colorscheme solarized
-colorscheme molokai
+colorscheme solarized
+"colorscheme molokai
 
 
 set tags=/home/zming/projects/tags
-set tags+=/home/zming/miniconda2/envs/xcf/lib/python2.7/tags
+set tags=/home/zming/projects/xcf/tags
+set tags+=/home/zming/miniconda2/envs/xcf/tags
+set tags+=/home/zming/projects/pluto/tags
+set tags+=/home/zming/projects/hulk/hulk/tags
+set tags+=/home/zming/projects/hubble/tags
 nnoremap <C-]> g<C-]>
 
 
@@ -686,3 +691,5 @@ if &term =~ "xterm"
     let &t_ti = "\<Esc>[?47h"
     let &t_te = "\<Esc>[?47l"
 endif
+
+cs add $CSCOPE_DB
